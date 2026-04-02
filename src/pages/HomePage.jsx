@@ -100,12 +100,12 @@ const milestones = [
 ]
 
 const resources = [
-  { icon: '📄', title: 'Membership Form', desc: 'Download PDF' },
-  { icon: '📄', title: 'Guarantor Form', desc: 'Download PDF' },
-  { icon: '📄', title: 'Loan Form', desc: 'Download PDF' },
-  { icon: '📄', title: 'Constitution', desc: 'Download PDF' },
-  { icon: '📄', title: 'FAQs', desc: 'Download PDF' },
-  { icon: '💬', title: 'Live Chat', desc: 'Chat Now' }
+  { icon: '📄', title: 'Membership Form', desc: 'Apply Now', link: googleFormLink },
+  { icon: '📄', title: 'Guarantor Form', desc: 'Download PDF', link: '/HPMC-GUARANTORS-FORM.pdf' },
+  { icon: '📄', title: 'Loan Form', desc: 'Download PDF', link: '/HPMC-LOAN-FORM.pdf' },
+  { icon: '📄', title: 'Constitution', desc: 'Download PDF', link: null },
+  { icon: '📄', title: 'FAQs', desc: 'Download PDF', link: null },
+  { icon: '💬', title: 'Live Chat', desc: 'Chat Now', link: null }
 ]
 
 const partners = [
@@ -649,11 +649,25 @@ export default function HomePage() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 max-w-6xl mx-auto">
             {resources.map((r, i) => (
-              <div key={i} className="bg-cream rounded-xl p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
-                <span className="text-4xl mb-2 block">{r.icon}</span>
-                <h3 className="font-semibold text-gray-800 text-sm mb-1">{r.title}</h3>
-                <p className="text-xs text-primary group-hover:underline">{r.desc}</p>
-              </div>
+              r.link ? (
+                <a 
+                  key={i} 
+                  href={r.link} 
+                  target={r.link.startsWith('http') ? '_blank' : '_self'}
+                  rel={r.link.startsWith('http') ? 'noopener noreferrer' : undefined}
+                  className="bg-cream rounded-xl p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group block"
+                >
+                  <span className="text-4xl mb-2 block">{r.icon}</span>
+                  <h3 className="font-semibold text-gray-800 text-sm mb-1">{r.title}</h3>
+                  <p className="text-xs text-primary group-hover:underline">{r.desc}</p>
+                </a>
+              ) : (
+                <div key={i} className="bg-cream rounded-xl p-4 text-center hover:shadow-lg transition-all hover:-translate-y-1 cursor-pointer group">
+                  <span className="text-4xl mb-2 block">{r.icon}</span>
+                  <h3 className="font-semibold text-gray-800 text-sm mb-1">{r.title}</h3>
+                  <p className="text-xs text-primary group-hover:underline">{r.desc}</p>
+                </div>
+              )
             ))}
           </div>
         </div>
