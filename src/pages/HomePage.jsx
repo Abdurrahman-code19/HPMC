@@ -69,25 +69,11 @@ const services = [
 
 const testimonials = [
   {
-    name: 'Amina Bello',
-    since: 'Member since 2018',
-    role: 'Business Owner',
-    quote: 'HPMC transformed my business. I started with a small shop in Jos market, and with their Business Loan, I now have a thriving wholesale business. The team is professional and truly cares about members\' success.',
-    highlight: 'From small shop to wholesale distributor'
-  },
-  {
-    name: 'Ibrahim K.',
-    since: 'Member since 2020',
-    role: 'Civil Servant',
-    quote: 'The Qard-al-Hasan loan saved my family during a medical emergency. No interest, no pressure, just genuine support. May Allah bless HPMC abundantly.',
-    highlight: 'Grateful for the interest-free support'
-  },
-  {
-    name: 'Fatima S.',
+    name: 'Oriolowo Saeed Obasanjo',
     since: 'Member since 2019',
-    role: 'Teacher',
-    quote: 'Their EasyBuy scheme helped me get a generator and solar system for my home. The installment plan was affordable and transparent. Highly recommended!',
-    highlight: 'Affordable and transparent financing'
+    role: 'Head of IT',
+    quote: 'HPMC has been a beacon of hope for me and my family. The cooperative provided not just financial support but also a sense of community and belonging. The Sharia-compliant processes give peace of mind knowing that all transactions are ethical and transparent.',
+    highlight: 'A trusted partner in financial growth'
   }
 ]
 
@@ -632,7 +618,7 @@ export default function HomePage() {
           </div>
 
           <div className="text-center mt-12">
-            <Link to="/about" className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-dark transition-all hover:scale-105">
+            <Link to="/about#leadership" className="inline-block bg-primary text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-dark transition-all hover:scale-105">
               View Full Leadership Team →
             </Link>
           </div>

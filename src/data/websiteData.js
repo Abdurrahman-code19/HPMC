@@ -7,16 +7,17 @@ export const contactInfo = {
 }
 
 export const executiveTeam = [
-  { name: 'Obasanjo Ambali', surname: 'Salaudeen', position: 'PRESIDENT', years: '15+ years', initials: 'OAS' },
-  { name: 'Olaleye', surname: 'Muhammad', position: 'VICE-PRESIDENT', years: '12+ years', initials: 'OM' },
-  { name: 'Badmus Shuaib', surname: 'Alani', position: 'HEAD OF FINANCE', years: '10+ years', initials: 'BSA' },
-  { name: 'Ojegbede', surname: 'AbdulKabir', position: 'FINANCE II', years: '8+ years', initials: 'OA' },
-  { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO' },
-  { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA' },
-  { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI' },
-  { name: 'Ayoniyi', surname: 'Abd.Rasheed', position: 'EXECUTIVE MEMBER', years: '7+ years', initials: 'AA' },
-  { name: 'Ellas', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL' },
-  { name: 'Abdus-salaam', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN' },
+  { name: 'Obasanjo Ambali', surname: 'Salaudeen', position: 'PRESIDENT', years: '15+ years', initials: 'OAS', image: '/President.jpeg' },
+  { name: 'Olaleye', surname: 'Muhammad', position: 'VICE-PRESIDENT', years: '12+ years', initials: 'OM', image: '/Olaleye Muhammad - Vice President.jpeg' },
+  { name: 'Badmus Shuaib', surname: 'Alani', position: 'HEAD OF FINANCE', years: '10+ years', initials: 'BSA', image: '/Shuaib.jpeg' },
+  { name: 'Ojegbede', surname: 'AbdulKabir', position: 'FINANCE II', years: '8+ years', initials: 'OA', image: '/Ojengbede - Finance II.jpeg' },
+  { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO', image: '/Oriolowo IT department.jpeg' },
+  { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA', image: '/Idris Jamiu, IT department.jpeg' },
+  { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI', image: '/Nasir, legal Adviser.jpeg' },
+  { name: 'Engr. Awoniyi', surname: 'Abd. Rasheed', position: 'EXECUTIVE MEMBER', years: '7+ years', initials: 'AA', image: '/Awoniyi - Executive member.jpeg' },
+  { name: 'Bro Elias', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL', image: '/Bro Elias.jpeg' },
+  { name: 'Missionary Nafiu', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN', image: '/Missionary Nafiu.jpeg' },
+  { name: 'Ahmad', surname: '', position: 'GENERAL SECRETARY', years: '8+ years', initials: 'AH', image: '/Ahmad - General Secretary.jpeg' },
 ]
 
 export const heroSlides = [

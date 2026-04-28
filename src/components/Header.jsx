@@ -8,9 +8,10 @@ export default function Header() {
 
   const navLinks = [
     { path: '/', label: 'Home' },
-    { path: '/about', label: 'About Us' },
-    { path: '/services', label: 'Services' },
-    { path: '/faq', label: 'FAQs' },
+    { path: '/about', label: 'About' },
+    { path: '/loans', label: 'Loans' },
+    { path: '/membership', label: 'Membership' },
+    { path: '/resources', label: 'Resources' },
     { path: '/contact', label: 'Contact' },
   ]
 

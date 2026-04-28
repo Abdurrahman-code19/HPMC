@@ -48,9 +48,9 @@ export default function ServicesPage() {
                     <span className="text-yellow-400 text-sm font-semibold uppercase tracking-wider">{loan.category}</span>
                     <h3 className="font-heading text-2xl font-bold mt-2 mb-4">{loan.name}</h3>
                     <p className="text-white/80 mb-6">{loan.shortDesc}</p>
-                    <a href={googleFormLink} target="_blank" rel="noopener noreferrer" className="inline-block bg-yellow-400 text-primary px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-all">
-                      Apply Now
-                    </a>
+                    <Link to="/loans" className="inline-block bg-yellow-400 text-primary px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition-all">
+                      View Loan Details
+                    </Link>
                   </div>
                   <div className="lg:w-2/3 p-8">
                     <div className="grid md:grid-cols-2 gap-6">

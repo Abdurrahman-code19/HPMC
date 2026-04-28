@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { tagline } from '../data/websiteData'
 
 const tabs = [
@@ -6,40 +6,36 @@ const tabs = [
   { id: 'leadership', label: 'Leadership' },
 ]
 
-const executiveTeam = [
-  { name: 'Obasanjo Ambali', surname: 'Salaudeen', position: 'PRESIDENT', years: '15+ years', initials: 'OAS' },
-  { name: 'Olaleye', surname: 'Muhammad', position: 'VICE-PRESIDENT', years: '12+ years', initials: 'OM' },
-  { name: 'Badmus Shuaib', surname: 'Alani', position: 'HEAD OF FINANCE', years: '10+ years', initials: 'BSA' },
-  { name: 'Ojegbede', surname: 'AbdulKabir', position: 'FINANCE II', years: '8+ years', initials: 'OA' },
-  { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO' },
-  { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA' },
-  { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI' },
-  { name: 'Ayoniyi', surname: 'Abd.Rasheed', position: 'EXECUTIVE MEMBER', years: '7+ years', initials: 'AA' },
-  { name: 'Ellas', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL' },
-  { name: 'Abdus-salaam', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN' },
-]
-
 const itTeam = [
-  { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO' },
-  { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA' },
+  { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO', image: '/Oriolowo IT department.jpeg' },
+  { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA', image: '/Idris Jamiu, IT department.jpeg' },
 ]
 
 const legalTeam = [
-  { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI' },
+  { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI', image: '/Nasir, legal Adviser.jpeg' },
 ]
 
 const executiveMembers = [
-  { name: 'Ellas', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL' },
-  { name: 'Abdus-salaam', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN' },
+  { name: 'Bro Elias', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL', image: '/Bro Elias.jpeg' },
+  { name: 'Engr. Awoniyi', surname: 'Abd. Rasheed', position: 'EXECUTIVE MEMBER', years: '7+ years', initials: 'AA', image: '/Awoniyi - Executive member.jpeg' },
+  { name: 'Missionary Nafiu', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN', image: '/Missionary Nafiu.jpeg' },
 ]
 
 function LeaderCard({ person, size = 'normal' }) {
   return (
     <div className={`bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-center group ${size === 'large' ? 'max-w-sm mx-auto' : ''}`}>
       <div className="relative mb-4">
-        <div className="w-32 h-32 mx-auto rounded-full border-4 border-yellow-400 overflow-hidden bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-lg group-hover:shadow-yellow-400/30">
-          <span className="text-3xl font-bold text-yellow-400">{person.initials}</span>
-        </div>
+        {person.image ? (
+          <img 
+            src={person.image} 
+            alt={person.name}
+            className="w-32 h-32 mx-auto rounded-full border-4 border-yellow-400 object-cover bg-gradient-to-br from-primary to-primary-dark"
+          />
+        ) : (
+          <div className="w-32 h-32 mx-auto rounded-full border-4 border-yellow-400 overflow-hidden bg-gradient-to-br from-primary to-primary-dark flex items-center justify-center group-hover:scale-105 transition-transform duration-300 shadow-lg group-hover:shadow-yellow-400/30">
+            <span className="text-3xl font-bold text-yellow-400">{person.initials}</span>
+          </div>
+        )}
         <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
           <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
@@ -93,12 +89,51 @@ function TeamSection({ title, subtitle, members, variant = 'default' }) {
   )
 }
 
+const milestones = [
+  { year: '2014', title: 'Founded', subtitle: 'with 50 Members' },
+  { year: '2016', title: '100 Members', subtitle: 'First Loan Disbursed' },
+  { year: '2018', title: '500 Members', subtitle: 'First AGM Held' },
+  { year: '2020', title: '₦500M Disbursed', subtitle: 'Milestone' },
+  { year: '2024', title: '2,500+ Members', subtitle: 'Reached' }
+]
+
+const historyContent = [
+  { year: '2014', title: 'The Beginning', content: 'HPMC was established with just 50 members with a vision to provide Sharia-compliant financial services to our community. Starting as a small cooperative in Jos, we aimed to address the financial needs of Muslims who sought ethical banking alternatives.' },
+  { year: '2016', title: 'First Major Milestone', content: 'Reached 100 active members and disbursed our first loan. We introduced the Micro Business Loan product to support small entrepreneurs in the market.' },
+  { year: '2018', title: 'Growing Impact', content: 'Membership grew to 500+ members. We launched our Business Growth Loan and held our first Annual General Meeting, establishing strong governance structures.' },
+  { year: '2020', title: 'COVID Resilience', content: 'Despite the pandemic, we disbursed over ₦500 million in loans. We introduced relief packages and extended repayment periods for affected members.' },
+  { year: '2022', title: 'Digital Transformation', content: 'Launched our online membership portal and introduced the Easy Buy program for household items and electronics.' },
+  { year: '2024', title: 'Today', content: 'Now with 2,500+ members, HPMC continues to expand. We offer services including loans, savings, Hajj packages, and business development training.' }
+]
+
 export default function AboutPage() {
   const [activeTab, setActiveTab] = useState('history')
 
+  useEffect(() => {
+    if (window.location.hash === '#leadership') {
+      setActiveTab('leadership')
+      setTimeout(() => {
+        document.getElementById('leadership')?.scrollIntoView({ behavior: 'smooth' })
+      }, 100)
+    }
+  }, [])
+
+  const executiveTeam = [
+    { name: 'Obasanjo Ambali', surname: 'Salaudeen', position: 'PRESIDENT', years: '15+ years', initials: 'OAS', image: '/President.jpeg' },
+    { name: 'Olaleye', surname: 'Muhammad', position: 'VICE-PRESIDENT', years: '12+ years', initials: 'OM', image: '/Olaleye Muhammad - Vice President.jpeg' },
+    { name: 'Badmus Shuaib', surname: 'Alani', position: 'HEAD OF FINANCE', years: '10+ years', initials: 'BSA', image: '/Shuaib.jpeg' },
+    { name: 'Ojegbede', surname: 'AbdulKabir', position: 'FINANCE II', years: '8+ years', initials: 'OA', image: '/Ojengbede - Finance II.jpeg' },
+    { name: 'Oriolowo Obasanjo', surname: 'Saeed', position: 'HEAD OF IT', years: '8+ years', initials: 'OO', image: '/Oriolowo IT department.jpeg' },
+    { name: 'Idris Jamiu', surname: 'Abiodun', position: 'IT II', years: '5+ years', initials: 'IJA', image: '/Idris Jamiu, IT department.jpeg' },
+    { name: 'Muhammad Nasir', surname: 'Ibrahim', position: 'LEGAL ADVISER', years: '10+ years', initials: 'MNI', image: '/Nasir, legal Adviser.jpeg' },
+    { name: 'Engr. Awoniyi', surname: 'Abd. Rasheed', position: 'EXECUTIVE MEMBER', years: '7+ years', initials: 'AA', image: '/Awoniyi - Executive member.jpeg' },
+    { name: 'Bro Elias', surname: 'Lawal', position: 'EXECUTIVE MEMBER', years: '6+ years', initials: 'EL', image: '/Bro Elias.jpeg' },
+    { name: 'Missionary Nafiu', surname: 'Nafiu O.', position: 'EXECUTIVE MEMBER', years: '5+ years', initials: 'AN', image: '/Missionary Nafiu.jpeg' },
+    { name: 'Ahmad', surname: '', position: 'GENERAL SECRETARY', years: '8+ years', initials: 'AH', image: '/Ahmad - General Secretary.jpeg' },
+  ]
+
   return (
     <div>
-      {/* Hero */}
       <section className="bg-gradient-to-r from-primary to-primary-dark text-white py-20 relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute bottom-0 left-0 w-96 h-96 bg-yellow-400 rounded-full -translate-x-1/2 translate-y-1/2" />
@@ -112,7 +147,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Tabs */}
       <section className="py-12 bg-white border-b">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-4 justify-center">
@@ -133,115 +167,106 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Tab Content */}
-      <section className="py-16 bg-cream">
-        <div className="container mx-auto px-4">
-          {activeTab === 'history' && (
-            <div className="max-w-4xl mx-auto">
-              <h2 className="font-heading text-3xl font-bold mb-6 text-center">Our Story</h2>
-              <div className="prose prose-lg">
-                <p className="text-gray-600 mb-6">
-                  HPMC was founded with a vision to create a financial cooperative that operates 
-                  in full compliance with Islamic Sharia principles. Based in Jos, Plateau State, Nigeria, 
-                  we have grown from a small group of dedicated members to a thriving cooperative society.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  Our founding principles center on transparency, mutual assistance, and ethical financial 
-                  practices. We believe that financial inclusion should never compromise one's religious 
-                  beliefs or values. That's why we've built an institution that serves our community through 
-                  halal means.
-                </p>
-                <p className="text-gray-600 mb-6">
-                  Registered under the Plateau State Ministry of Commerce with license number PL22620, 
-                  HPMC has consistently demonstrated commitment to regulatory compliance and community service.
-                </p>
-                
-                <div className="bg-white rounded-2xl p-8 shadow-lg mt-8 border-l-4 border-yellow-400">
-                  <h3 className="font-heading text-2xl font-bold mb-4 text-yellow-600">Our Vision</h3>
-                  <p className="text-gray-600 italic">
-                    "To achieve a sustainable social and economic empowerment for all members by investing collective savings into high-growth, viable business ventures."
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl p-8 shadow-lg mt-8 border-l-4 border-primary">
-                  <h3 className="font-heading text-2xl font-bold mb-4 text-primary">Our Mission</h3>
-                  <p className="text-gray-600 italic">
-                    "To build a diverse investment portfolio across multiple sectors within Nigeria and internationally, ensuring consistent returns and wealth distribution for every members' prosperity."
-                  </p>
-                </div>
-
-                <div className="bg-white rounded-2xl p-8 shadow-lg mt-8">
-                  <h3 className="font-heading text-2xl font-bold mb-4">Core Values</h3>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    {['Integrity', 'Transparency', 'Community', 'Excellence', 'Sharia Compliance', 'Mutual Support'].map((value, i) => (
-                      <div key={i} className="flex items-center gap-3 p-3 bg-cream rounded-lg">
-                        <div className="w-8 h-8 bg-primary rounded-full flex items-center justify-center">
-                          <svg className="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                          </svg>
-                        </div>
-                        <span className="font-medium text-gray-700">{value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'leadership' && (
-            <div className="max-w-7xl mx-auto">
+      {activeTab === 'history' && (
+        <div className="max-w-5xl mx-auto">
+          <section className="py-16 bg-cream">
+            <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Our Leadership Team</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">
-                  Meet the dedicated professionals driving HPMC's mission towards sustainable social and economic empowerment
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Journey</h2>
+                <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                  From humble beginnings to a movement transforming lives across Plateau State
                 </p>
               </div>
 
-              {/* Executive Leadership Team */}
-              <TeamSection 
-                title="Executive Leadership Team" 
-                subtitle="Steering HPMC towards excellence"
-                members={executiveTeam}
-              />
-
-              {/* IT & Technology Team */}
-              <TeamSection 
-                title="IT & Technology Team" 
-                subtitle="Powering our digital transformation"
-                members={itTeam}
-                variant="highlight"
-              />
-
-              {/* Legal & Advisory Team */}
-              <TeamSection 
-                title="Legal & Advisory Team" 
-                subtitle="Ensuring compliance and governance"
-                members={legalTeam}
-              />
-
-              {/* Executive Members */}
-              <TeamSection 
-                title="Executive Members" 
-                subtitle="Contributing to our collective success"
-                members={executiveMembers}
-                variant="highlight"
-              />
-
-              {/* Join CTA */}
-              <div className="text-center mt-16 bg-gradient-to-r from-primary to-primary-dark rounded-2xl p-12 text-white">
-                <h3 className="font-heading text-2xl font-bold mb-4">Want to Join Our Team?</h3>
-                <p className="text-white/80 mb-6 max-w-lg mx-auto">
-                  We're always looking for dedicated professionals who share our vision. Explore opportunities at HPMC.
-                </p>
-                <a href="/contact" className="inline-block bg-yellow-400 text-primary px-8 py-4 rounded-lg font-bold hover:bg-yellow-300 transition-all hover:scale-105">
-                  Contact Us
-                </a>
+              <div className="relative">
+                <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-yellow-400 hidden md:block"></div>
+                <div className="space-y-12">
+                  {historyContent.map((item, index) => (
+                    <div key={index} className={`flex items-center md:flex-row ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
+                      <div className="flex-1 md:px-8">
+                        <div className="bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all">
+                          <span className="text-yellow-600 font-bold text-lg">{item.year}</span>
+                          <h3 className="font-heading font-bold text-xl text-primary mt-1 mb-2">{item.title}</h3>
+                          <p className="text-gray-600">{item.content}</p>
+                        </div>
+                      </div>
+                      <div className="hidden md:block w-4 h-4 bg-yellow-400 rounded-full border-4 border-white shadow-lg z-10"></div>
+                      <div className="flex-1"></div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
-          )}
+          </section>
+
+          <section className="py-16 bg-white">
+            <div className="container mx-auto px-4">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-primary mb-4">Our Core Values</h2>
+              </div>
+              <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                <div className="text-center p-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-4xl">🤝</span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Unity</h3>
+                  <p className="text-gray-600">Building a strong community of support and cooperation</p>
+                </div>
+                <div className="text-center p-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-4xl">📖</span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Integrity</h3>
+                  <p className="text-gray-600">Adhering to Sharia principles in all our dealings</p>
+                </div>
+                <div className="text-center p-6">
+                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-4xl">💪</span>
+                  </div>
+                  <h3 className="font-bold text-lg mb-2">Service</h3>
+                  <p className="text-gray-600">Committed to member empowerment and growth</p>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      )}
+
+      {activeTab === 'leadership' && (
+        <div id="leadership" className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 pt-16">
+            <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">Our Leadership Team</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Meet the dedicated professionals driving HPMC's mission towards sustainable social and economic empowerment
+            </p>
+          </div>
+
+          <TeamSection 
+            title="Executive Leadership Team" 
+            subtitle="Steering HPMC towards excellence"
+            members={executiveTeam}
+          />
+
+          <TeamSection 
+            title="IT & Technology Team" 
+            subtitle="Powering our digital transformation"
+            members={itTeam}
+            variant="highlight"
+          />
+
+          <TeamSection 
+            title="Legal & Advisory" 
+            subtitle="Ensuring compliance and governance"
+            members={legalTeam}
+          />
+
+          <TeamSection 
+            title="Executive Members" 
+            subtitle="Supporting our vision"
+            members={executiveMembers}
+          />
+        </div>
+      )}
     </div>
   )
 }
